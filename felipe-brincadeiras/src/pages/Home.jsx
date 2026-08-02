@@ -1,7 +1,7 @@
 import { HomeService } from "../services/HomeService"
 
 export function Home() {
-    const { message } = HomeService();
+    const { loading, message } = HomeService();
 
     return (
         <>
