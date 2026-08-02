@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchHelloMessage } from "../services/HomeService";
+import { fetchHelloMessage } from "../services/homeService";
 
 export function useGetMessage() {
     const [loading, setLoading] = useState<boolean>(true);
