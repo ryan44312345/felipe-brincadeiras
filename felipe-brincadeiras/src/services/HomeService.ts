@@ -10,11 +10,12 @@ export function HomeService() {
                 const result = await fetch(import.meta.env.VITE_API_URL + "/hello", {
                     method: "GET",
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "text/html"
                     }
                 });
-                const json = await result.json();
-                setMessage(json.message);
+                const text = await result.text();
+                console.log(text);
+                setMessage(text);
             } catch (error) {
                 console.error("Failed to fetch data:", error);
             } finally {
@@ -22,7 +23,7 @@ export function HomeService() {
             }
         };
 
-        fetchData();
+        fetchData();    
     }, []);
 
     return { loading, message };
