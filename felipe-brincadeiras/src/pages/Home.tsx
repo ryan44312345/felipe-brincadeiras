@@ -1,11 +1,11 @@
-import { HomeService } from "../services/HomeService"
+import { useHomeService } from "../services/useHomeService"
 
 export function Home() {
-    const { loading, text } = HomeService();
+    const { loading, message } = useHomeService();
 
     return (
         <>
-            <h1>{text}</h1>
+            <h1>{message}</h1>
             <h1>{loading ? "loading..." : "Carregou"}</h1>
             <p>Vendo se aparece algo no site</p>
         </>
