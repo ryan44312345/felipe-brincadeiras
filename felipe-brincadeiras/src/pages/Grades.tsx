@@ -8,7 +8,7 @@ function formatResponse(response: any): string {
 }
 
 export default function Grades() {
-    const { loading, response, submitGrades } = usePostGrades();
+    const { loading, response, submitGrades, clearResponse } = usePostGrades();
     const [grades, setGrades] = useState<string[]>([""]);
 
     const handleSubmit = () => {
@@ -28,6 +28,11 @@ export default function Grades() {
 
     const handleAddGrade = () => {
         setGrades((prevGrades) => [...prevGrades, ""]);
+    };
+
+    const handleResetGrades = () => {
+        setGrades([""]);
+        clearResponse();
     };
 
     const renderResponse = () => {
@@ -59,12 +64,21 @@ export default function Grades() {
                         />
                     ))}
                     
-                    <button 
-                        onClick={handleAddGrade}
-                        className="w-full px-6 py-2 bg-gray-200 text-gray-800 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors cursor-pointer"
-                    >
-                        Adicionar números
-                    </button>
+                    <div className="flex gap-4">
+                        <button 
+                            onClick={handleAddGrade}
+                            className="w-full px-6 py-2 bg-gray-200 text-gray-800 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors cursor-pointer"
+                        >
+                            Adicionar números
+                        </button>
+                        
+                        <button 
+                            onClick={handleResetGrades}
+                            className="w-full px-6 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors cursor-pointer"
+                        >
+                            Resetar
+                        </button>
+                    </div>
 
                     <button 
                         onClick={handleSubmit}

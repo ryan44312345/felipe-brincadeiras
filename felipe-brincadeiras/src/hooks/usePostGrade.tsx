@@ -18,5 +18,7 @@ export function usePostGrades() {
         }
     };
 
-    return { loading, response, submitGrades };
+    const clearResponse = () => setResponse(null);
+
+    return { loading, response, submitGrades, clearResponse };
 }
