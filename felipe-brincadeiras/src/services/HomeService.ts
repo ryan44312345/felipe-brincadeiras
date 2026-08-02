@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function HomeService() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null);
@@ -6,7 +8,7 @@ export function HomeService() {
         setLoading(true)
         
         try {
-            const result = await fetch(`${import.meta.env.VITE_URL_API}`)
+            const result = await fetch(`${import.meta.env.VITE_API_URL}`)
             setData(await result.json())
         } finally {
             setLoading(false);

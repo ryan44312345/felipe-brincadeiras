@@ -1,4 +1,4 @@
-import HomeService from "../services/HomeService"
+import { HomeService } from "../services/HomeService"
 
 export function Home() {
 
