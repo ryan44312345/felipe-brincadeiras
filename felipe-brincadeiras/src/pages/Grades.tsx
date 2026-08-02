@@ -60,7 +60,7 @@ export default function Grades() {
 
                 <div className="mt-4 text-center min-h-[28px]">
                     <p className={`text-lg font-medium transition-opacity duration-300 ${loading ? 'text-gray-500' : 'text-gray-900'}`}>
-                        {loading ? "carregando..." : resposta}
+                        {loading ? "carregando..." : (resposta && typeof resposta === 'object' ? JSON.stringify(resposta) : resposta)}
                     </p>
                 </div>
             </div>
