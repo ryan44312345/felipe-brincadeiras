@@ -7,6 +7,7 @@ export function Home() {
         <>
             <h1>{message}</h1>
             <h1>{loading ? "loading..." : "Carregou"}</h1>
+            <p>Vendo se aparece algo no site</p>
         </>
     )
 }
