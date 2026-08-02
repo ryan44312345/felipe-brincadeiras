@@ -1,6 +1,6 @@
 import { HomeService } from "../services/HomeService"
 
-function Home() {
+export function Home() {
     const { loading, message } = HomeService();
 
     return (
