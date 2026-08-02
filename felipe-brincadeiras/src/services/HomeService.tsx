@@ -8,6 +8,7 @@ export function HomeService() {
         const fetchData = async () => {
             try {
                 const result = await fetch(import.meta.env.VITE_API_URL + "/hello");
+                console.log(import.meta.env.VITE_API_URL);
                 const text = await result.text();
                 console.log(text);
                 setMessage(text);
