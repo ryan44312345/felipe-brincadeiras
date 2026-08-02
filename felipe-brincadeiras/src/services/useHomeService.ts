@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 
-export function HomeService() {
+export function useHomeService() {
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState("");
+
+    const api_url = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await fetch(import.meta.env.VITE_API_URL + "/hello");
-                console.log(import.meta.env.VITE_API_URL);
-                const text = await result.text();
-                console.log(text);
+                const response = await fetch(`${api_url}/hello`);
+                const text = await response.text();
                 setMessage(text);
             } catch (error) {
                 console.error("Failed to fetch data:", error);
