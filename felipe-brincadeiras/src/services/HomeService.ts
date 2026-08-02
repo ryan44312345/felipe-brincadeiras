@@ -7,12 +7,7 @@ export function HomeService() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await fetch(import.meta.env.VITE_API_URL + "/hello", {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "text/html"
-                    }
-                });
+                const result = await fetch(import.meta.env.VITE_API_URL + "/hello");
                 const text = await result.text();
                 console.log(text);
                 setMessage(text);

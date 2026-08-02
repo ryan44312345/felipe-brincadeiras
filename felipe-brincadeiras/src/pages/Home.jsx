@@ -4,6 +4,6 @@ export function Home() {
     const { loading, message } = HomeService();
 
     return (
-        <h1>{loading ? "loading..." : message}</h1>
+        <h1>{message}</h1>
     )
 }
