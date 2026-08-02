@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
+import { fetchHelloMessage } from "../services/HomeService";
 
-export function useHomeService() {
-    const [loading, setLoading] = useState(true);
-    const [message, setMessage] = useState("");
-
-    const api_url = import.meta.env.VITE_API_URL;
+export function useGetMessage() {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [message, setMessage] = useState<string>("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${api_url}/hello`);
-                const text = await response.text();
+                const text = await fetchHelloMessage();
                 setMessage(text);
             } catch (error) {
                 console.error("Failed to fetch data:", error);
@@ -19,7 +17,7 @@ export function useHomeService() {
             }
         };
 
-        fetchData();    
+        fetchData();
     }, []);
 
     return { loading, message };
