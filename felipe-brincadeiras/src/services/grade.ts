@@ -1,4 +1,4 @@
-export async function postGrades(nota: number, secondNota: number, thirdNota: number): Promise<any> {
+export async function postGrades(grades: number[]): Promise<any> {
     const api_url = import.meta.env.VITE_API_URL;
 
     const response = await fetch(`${api_url}/grades`, {
@@ -6,7 +6,7 @@ export async function postGrades(nota: number, secondNota: number, thirdNota: nu
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify([nota, secondNota, thirdNota])
+        body: JSON.stringify(grades)
     });
 
     if (!response.ok) {

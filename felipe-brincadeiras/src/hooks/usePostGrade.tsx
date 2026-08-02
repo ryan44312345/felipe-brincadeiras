@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { postGrades } from "../services/grade";
 
-export function useGetGrades() {
-    const [loading, setLoading] = useState(false)
-    const [resposta, setResposta] = useState<any>(null)
+export function usePostGrades() {
+    const [loading, setLoading] = useState(false);
+    const [response, setResponse] = useState<any>(null);
 
-    const buscarGrades = async (nota: number, secondNota: number, thirdNota: number) => {
-        setLoading(true)
+    const submitGrades = async (grades: number[]) => {
+        setLoading(true);
         try {
-            const response = await postGrades(nota, secondNota, thirdNota)
-            setResposta(response)
+            const apiResponse = await postGrades(grades);
+            setResponse(apiResponse);
         } catch (error) {
             console.error("Failed to post grades:", error);
-            setResposta("Erro ao enviar notas")
+            setResponse("Erro ao enviar notas");
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
-    return {loading, resposta, buscarGrades}
+    return { loading, response, submitGrades };
 }
