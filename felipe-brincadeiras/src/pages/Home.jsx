@@ -1,10 +1,9 @@
 import { HomeService } from "../services/HomeService"
 
 export function Home() {
-
-    const message = HomeService.getHelloWorld()
+    const { loading, message } = HomeService();
 
     return (
-        <h1>{message}</h1>
+        <h1>{loading ? "loading..." : message}</h1>
     )
 }
