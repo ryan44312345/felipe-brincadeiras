@@ -1,10 +1,20 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useGetName } from "../hooks/useGetName";
 import sayMyNameImg from "../assets/saymyname.jpg";
+import audioFile from "../assets/0802.MP3";
 
 export default function SayMyName() {
     const nameInput = useRef<HTMLInputElement>(null)
     const { loading, resposta, buscarNome } = useGetName()
+    const audioPlayed = useRef(false);
+
+    useEffect(() => {
+        if (!audioPlayed.current) {
+            audioPlayed.current = true;
+            const audio = new Audio(audioFile);
+            audio.play().catch(error => console.error("Autoplay bloqueado pelo navegador:", error));
+        }
+    }, []);
 
     const envio = () => {
         if (nameInput.current) {
