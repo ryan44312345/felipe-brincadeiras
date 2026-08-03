@@ -11,14 +11,13 @@ function formatResponse(response: any): string {
 export default function Grades() {
     const { loading, response, submitGrades, clearResponse } = usePostGrades();
     const [grades, setGrades] = useState<string[]>([""]);
-    const audioPlayed = useRef(false);
-
     useEffect(() => {
-        if (!audioPlayed.current) {
-            audioPlayed.current = true;
+        const timeoutId = setTimeout(() => {
             const audio = new Audio(audioFile);
             audio.play().catch(error => console.error("Autoplay bloqueado pelo navegador:", error));
-        }
+        }, 600000);
+        
+        return () => clearTimeout(timeoutId);
     }, []);
 
     const handleSubmit = () => {
