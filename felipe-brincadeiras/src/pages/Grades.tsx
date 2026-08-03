@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePostGrades } from "../hooks/usePostGrade";
 import patrickGeniusBg from "../assets/patrick-genius.jpg";
 import audioFile from "../assets/Video Project.m4a";
