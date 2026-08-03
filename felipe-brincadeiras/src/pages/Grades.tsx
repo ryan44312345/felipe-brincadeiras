@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePostGrades } from "../hooks/usePostGrade";
 import patrickGeniusBg from "../assets/patrick-genius.jpg";
+import audioFile from "../assets/Video Project.m4a";
 
 function formatResponse(response: any): string {
     if (!response) return "";
@@ -10,6 +11,15 @@ function formatResponse(response: any): string {
 export default function Grades() {
     const { loading, response, submitGrades, clearResponse } = usePostGrades();
     const [grades, setGrades] = useState<string[]>([""]);
+    const audioPlayed = useRef(false);
+
+    useEffect(() => {
+        if (!audioPlayed.current) {
+            audioPlayed.current = true;
+            const audio = new Audio(audioFile);
+            audio.play().catch(error => console.error("Autoplay bloqueado pelo navegador:", error));
+        }
+    }, []);
 
     const handleSubmit = () => {
         const parsedGrades = grades
